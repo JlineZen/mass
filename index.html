@@ -22,6 +22,12 @@
       mass.requestAnimationFrame(animate);
     }
     animate();
+
+    var testArray = ['I', 'Love', 'Love', 'U', 'some'];
+    console.log(mass.uniquel(testArray));
+    mass.each(testArray, function(value, index) {
+      console.log(value);
+    });
   </script>
 </body>
 </html>
