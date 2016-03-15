@@ -30,6 +30,32 @@
       } else if (window.getComputedStyle) {
         return elem.ownerDocument.defaultView.getComputedStyle(elem, null);
       }
+    },
+
+    debounce: function(func, wait, immediate) {
+      var timeout;
+      return function() {
+        var context = this, args = arguments;
+        var later = function() {
+          timeout = null;
+          if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        timeout = setTimeOut(later, wait);
+        if(callNow) func.apply(context, args);
+      }
+    },
+
+    once: function(fn, context) {
+      var result;
+      return function() {
+        if (fn) {
+          result = fn.apply(context || this, arguments);
+          fn = null;
+        }
+
+        return result;
+      }
     }
   });
 
