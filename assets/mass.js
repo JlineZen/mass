@@ -1,6 +1,7 @@
 ;(function() {
-  var root = this;
-  var mass = {};
+  var root = this,
+      mass = {},
+      nativeEach = [].forEach;
 
 
   function extend(target, sources) {
@@ -58,9 +59,20 @@
       }
     },
 
-    uniquel: function() { //remove the same in array
+    each: function(obj, callback, context) {
+      if (!obj) return;
+      if (typeof obj === 'function' && obj.forEach === nativeEach) {
+        obj.forEach(callback);
+      } else if (+obj.length === obj.length) {
+        for (var i = 0, len = obj.length; i < len; i++) {
+          callback.call(context, obj[i], i, obj);
+        }
+      }
+    },
+
+    uniquel: function(obj) { //remove the same in array
       var newArray = [];
-      this.forEach(function(index) {
+      obj.forEach(function(index) {
         if (newArray.indexOf(index) == -1) {
           newArray.push(index);
         }
