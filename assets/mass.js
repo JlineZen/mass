@@ -56,6 +56,17 @@
 
         return result;
       }
+    },
+
+    uniquel: function() { //remove the same in array
+      var newArray = [];
+      this.forEach(function(index) {
+        if (newArray.indexOf(index) == -1) {
+          newArray.push(index);
+        }
+      });
+
+      return newArray;
     }
   });
 
