@@ -7,43 +7,13 @@
 </head>
 <body>
   <script type="text/javascript">
-    var elem = document.createElement('div');
-    elem.style.width = '100px';
-    elem.style.height = '100px';
-    document.body.appendChild(elem);
-
-    function animate() {
-      elem.style.backgroundColor = (function(){
-        var random = function() {
-         return Math.floor(Math.random() * 255);
-        };
-        return 'rgb(' + random() + ',' + random() + ',' + random() + ')';
-      })();
-      mass.requestAnimationFrame(animate);
-    }
-    animate();
-
+    console.log(M);
+    
     var testArray = ['I', 'Love', 'Love', 'U', 'some'];
-    console.log(mass.uniquel(testArray));
-    mass.each(testArray, function(value, index) {
+    console.log(M.uniquel(testArray));
+    M.each(testArray, function(value, index) {
       console.log(value);
     });
-
-    var promise = mass.Promise();
-    var testPromise = function() {
-      setTimeout(function() {
-        promise.resolve('hello world');
-      }, 1000);
-
-      return promise;
-    };
-
-    testPromise()
-      .then(function(re) {
-        var re = re + ' javascript';
-        console.log(re);
-        promise.resolve(re);
-      });
   </script>
 </body>
 </html>

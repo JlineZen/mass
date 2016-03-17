@@ -1,6 +1,6 @@
 ;(function() {
   var root = this,
-      mass = {},
+      Mass = {},
       nativeEach = [].forEach;
   
   function Promise() {
@@ -44,7 +44,7 @@
     return target;
   }
 
-  extend(mass, {
+  extend(Mass, {
     requestAnimationFrame: function(fn) {
        return  window.requestAnimationFrame(fn) ||
                window.mozRequestAnimationFrame(fn) ||
@@ -117,5 +117,5 @@
     }
   });
 
-  root.mass = mass;
+  root.M = Mass;
 }).call(this);

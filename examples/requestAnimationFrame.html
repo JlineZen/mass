@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script type="text/javascript" src="../assets/mass.js"></script>
+  <title>Mass promise</title>
+</head>
+<body>
+  <script type="text/javascript">
+    var elem = document.createElement('div');
+    elem.style.width = '100px';
+    elem.style.height = '100px';
+    document.body.appendChild(elem);
+
+    function animate() {
+      elem.style.backgroundColor = (function(){
+        var random = function() {
+         return Math.floor(Math.random() * 255);
+        };
+        return 'rgb(' + random() + ',' + random() + ',' + random() + ')';
+      })();
+      M.requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+</body>
+</html>
