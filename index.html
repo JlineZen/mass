@@ -28,6 +28,22 @@
     mass.each(testArray, function(value, index) {
       console.log(value);
     });
+
+    var promise = mass.Promise();
+    var testPromise = function() {
+      setTimeout(function() {
+        promise.resolve('hello world');
+      }, 1000);
+
+      return promise;
+    };
+
+    testPromise()
+      .then(function(re) {
+        var re = re + ' javascript';
+        console.log(re);
+        promise.resolve(re);
+      });
   </script>
 </body>
 </html>

@@ -2,8 +2,39 @@
   var root = this,
       mass = {},
       nativeEach = [].forEach;
+  
+  function Promise() {
+    this.callbacks = [];
+  }    
 
+  Promise.prototype = {
 
+    constructor: Promise,
+
+    resolve: function(result) {
+      this.complete('resolve', result);
+    },
+
+    reject: function(result) {
+      this.complete('reject', result);
+    },
+
+    complete: function(type, result) {
+      while (this.callbacks[0]) {
+        this.callbacks.shift()[type](result);
+      }
+    },
+
+    then: function(successHandle, failedHandle) {
+      this.callbacks.push({
+        resolve: successHandle,
+        reject:  failedHandle
+      });
+
+      return this;
+    }
+  };
+      
   function extend(target, sources) {
     for (var key in sources) {
       if (Object.hasOwnProperty.call(sources, key)) {
@@ -79,6 +110,10 @@
       });
 
       return newArray;
+    },
+
+    Promise: function() {
+      return new Promise();
     }
   });
 
