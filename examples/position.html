@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <script type="text/javascript" src="../assets/mass.js"></script>
+  <title>javascript position problem</title>
+  <style type="text/css">
+    .demo {
+      width: 1000px;
+      height: 500px;
+      background-color: #eee;
+      overflow: auto;
+      margin-top: 80px;
+    }
+    .demo #test {
+      width: 1200px;
+      border: 20px solid pink;
+      height: 600px;
+      padding: 10px;
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo"><div id="test"></div></div>
+  <script type="text/javascript">
+    function getOffsetWidth(elem) {
+      return elem.offsetWidth;
+    }
+    function getClientWidth(elem) {
+      return elem.clientWidth;
+    }
+    function getScrollWidth(elem) {
+      return elem.scrollWidth;
+    }
+
+    var demo = document.querySelector('.demo');
+    var test = document.getElementById('test');
+
+    var d1 = getOffsetWidth(demo);
+    var d2 = getClientWidth(demo);
+    var d3 = getScrollWidth(demo);
+    var t1 = getOffsetWidth(test);
+    var t2 = getClientWidth(test);
+    var t3 = getScrollWidth(test);
+
+    console.log("offsetWidth: " + d1);
+    console.log("clientWidth: " + d2);
+    console.log("scrollWidth: " + d3);
+    // console.log("offsetWidth: " + t1);
+    // console.log("clientWidth: " + t2);
+    // console.log("scrollWidth: " + t3);
+    console.log(M.getStyle(demo)['width']);
+  </script>
+</body>
+</html>

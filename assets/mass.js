@@ -114,6 +114,10 @@
 
     Promise: function() {
       return new Promise();
+    },
+
+    width: function(elem) {
+      return elem.clientWidth;
     }
   });
 
