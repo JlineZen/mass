@@ -118,6 +118,10 @@
 
     width: function(elem) {
       return elem.clientWidth;
+    },
+
+    isArray: function(ary) {
+      return Object.prototype.toString.call(ary).slice(8, -1) === 'Array';
     }
   });
 
