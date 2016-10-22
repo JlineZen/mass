@@ -6,7 +6,7 @@
 
   function extend(target, sources) {
     for (var key in sources) {
-      if (Object.hasOwnProperty.call(sources, key)) {
+      if (Object.prototype.hasOwnProperty.call(sources, key)) {
         target[key] = sources[key];
       }
     }
@@ -42,7 +42,7 @@
           if (!immediate) func.apply(context, args);
         };
         var callNow = immediate && !timeout;
-        timeout = setTimeOut(later, wait);
+        timeout = setTimeout(later, wait);
         if(callNow) func.apply(context, args);
       }
     },
@@ -79,6 +79,12 @@
       });
 
       return newArray;
+    },
+
+    camelize: function(str) {
+    	return str.replace(/./, function(m) {
+    		return m[0].toUpperCase();
+    	});
     }
   });
 
